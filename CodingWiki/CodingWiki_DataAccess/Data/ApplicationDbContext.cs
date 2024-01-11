@@ -31,18 +31,25 @@ namespace CodingWiki_DataAccess.Data
                         BookId = 1,
                         Title = "Professional C# 7 and .NET Core 2.0",
                         ISBN = "978-1-119-44926-0",
-                        Price = 45.00M
+                        Price = 45.00M,
+                        Publisher_Id = 1
                     }
                     );
 
             var bookList = new Book[]
             {
-                new Book { BookId = 2, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M },
-                new Book { BookId = 3, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M },
-                new Book { BookId = 4, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M },
+                new Book { BookId = 2, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M, Publisher_Id = 2 },
+                new Book { BookId = 3, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M, Publisher_Id = 3 },
+                new Book { BookId = 4, ISBN = "978-1-119-44926-0", Title = "Professional C# 7 and .NET Core 2.0", Price = 45.00M, Publisher_Id = 3 },
             };
             // add a list of Book objects
             modelBuilder.Entity<Book>().HasData(bookList);
+
+            modelBuilder.Entity<Publisher>().HasData(
+                new Publisher { Location = "USA", Name = "Wrox Press", Publisher_Id = 1 },
+                new Publisher { Location = "UK", Name = "Wrox Press", Publisher_Id = 2 },
+                new Publisher { Location = "Fr", Name = "Bob Press", Publisher_Id = 3 }
+                );
         }
 
 
