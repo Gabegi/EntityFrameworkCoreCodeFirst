@@ -11,9 +11,10 @@ namespace CodingWiki_DataAccess.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }   
-        public DbSet<BookDetail> BookDetails { get; set; }   
+        public DbSet<BookDetail> BookDetails { get; set; }
 
 
+        public DbSet<Fluent_BookDetail> BookDetails_Fluent_ { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,7 +24,58 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Fluent_Book>()
+                        .HasOne(u => u.Publisher)
+                        .WithMany(u => u.Books)
+                        .HasForeignKey(u => u.Publisher_Id); // FK always in entity that has the 1 side of the 1-many relationship
+
+
+            
+            modelBuilder.Entity<Fluent_BookDetail>()
+                        .HasOne(b => b.Book)
+                        .WithOne(bd => bd.BookDetail)
+                        .HasForeignKey<Fluent_BookDetail>(b => b.BookId);
+            
+            
+            modelBuilder.Entity<Category>()
+                        .Ignore(c => c.DiscountedPrice);
+
+            modelBuilder.Entity<Category>()
+                        .Property(c => c.CategoryName)
+                        .HasMaxLength(50);
+
+            modelBuilder.Entity<Category>()
+                        .HasKey(c => c.CategoryId);
+
+
+            modelBuilder.Entity<Category>()
+                        .Property(c => c.Title)
+                        .IsRequired();
+
+
+            modelBuilder.Entity<Category>()
+                        .Property(c => c.ISBN)
+                        .HasColumnName("ISBN_Name");
+
+            modelBuilder.Entity<Fluent_BookDetail>()
+                        .Property(c => c.NumberOfChapters)
+                        .HasColumnName("NoOfChapters");
+
+
+            modelBuilder.Entity<Fluent_BookDetail>().ToTable("Fluent_BookDetails");
+
+            modelBuilder.Entity<Category>().ToTable("tb_Category");
+            
             modelBuilder.Entity<Book>().Property(b => b.Price).HasPrecision(10, 5);
+
+            modelBuilder.Entity<BookAuthorMap>()
+                .HasKey(ba => new 
+                { ba.Book_Id, 
+                  ba.Author_Id 
+                });
+
+
 
             modelBuilder.Entity<Book>().HasData(
                     new Book

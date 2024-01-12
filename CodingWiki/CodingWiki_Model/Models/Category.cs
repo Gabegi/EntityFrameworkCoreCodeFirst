@@ -7,6 +7,9 @@ namespace CodingWiki_Model.Models
     public class Category
     {
         public int CategoryId { get; set; }
+        public string ISBN { get; set; }
+        public string Title { get; set; }
+        public int DiscountedPrice { get; set; }
 
         [Column("Name")]
         [Required (ErrorMessage = "Genre name is required")]

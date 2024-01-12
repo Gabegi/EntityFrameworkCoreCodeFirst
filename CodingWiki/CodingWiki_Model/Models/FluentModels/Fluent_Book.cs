@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CodingWiki_Model.Models
 {
-    public class Book
+    public class Fluent_Book
     {
-        // [Key]
+        [Key]
         public int BookId { get; set; }
         public string Title { get; set; }
         [MaxLength(100)]
@@ -15,12 +15,13 @@ namespace CodingWiki_Model.Models
         [NotMapped]
         public string PriceRange { get; set; }
 
-        public BookDetail BookDetail { get; set; }
+        public Fluent_BookDetail BookDetail { get; set; }
 
-        [ForeignKey("Publisher")]
         public int Publisher_Id { get; set; }
-        public Publisher Publisher { get; set; }
+        public Fluent_Publisher Publisher { get; set; }
 
-        public List<BookAuthorMap> BookAuthorMap { get; set; }
+        //public List<Fluent_Author>Authors{ get; set; }
+
+        //public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
     }
 }

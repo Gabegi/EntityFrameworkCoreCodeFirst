@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CodingWiki_Model.Models
 {
-    [Table("Authors")]
-    public class Author
+    [Table("Fluent_Authors")]
+    public class Fluent_Author
     {
         [Key] 
         public int Author_Id { get; set; }
@@ -21,8 +21,9 @@ namespace CodingWiki_Model.Models
                 return FirstName + " " + LastName;
             }
         }
+        //public List<Fluent_Book> Books { get; set; }
 
-        public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
+        // public List<Fluent_BookAuthorMap> BookAuthorMap { get; set; }
 
     }
 }
