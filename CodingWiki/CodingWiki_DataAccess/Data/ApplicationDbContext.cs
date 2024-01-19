@@ -131,10 +131,5 @@ namespace CodingWiki_DataAccess.Data
                 new Publisher { Location = "Fr", Name = "Bob Press", Publisher_Id = 3 }
                 );
         }
-
-
-        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        //{
-        //}
     }
 }
