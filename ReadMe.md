@@ -4,7 +4,18 @@
 
 DotNet EF Core 8.0.1
 
-Read instruction on [Microsoft Docs](https://docs.microsoft.com/en-us/ef/core/)
+Read about the whole project on my blog [Entity Framework Core Code First: Introduction, Best Practices, Repository Pattern, Clean Architecture](https://medium.com/@codebob75/entity-framework-core-code-first-introduction-best-practices-repository-pattern-clean-22b6152bcb81)
+
+In this blog I cover everything about EF Core:
+- Basics
+- Migrations
+- Annotations
+- Fluent API
+- Using Entity Framework Core in code
+- Further topics
+- Repository Pattern & Clean architecture
+- Tips and Tricks
+- Errors and solutions
 
 ## NuGet Packages
 
