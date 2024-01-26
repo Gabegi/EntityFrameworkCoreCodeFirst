@@ -19,7 +19,6 @@ namespace CodingWiki_Web.Controllers
             foreach (var obj in objList)
             {
                 ;
-                // obj.Publisher = await _dbContext.Publishers.FindAsync(obj.Publisher_Id);
                 _dbContext.Entry(obj).Reference(u => u.Publisher).Load();
             }
             return View(objList);
