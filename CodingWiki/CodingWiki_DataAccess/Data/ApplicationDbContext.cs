@@ -23,22 +23,20 @@ namespace CodingWiki_DataAccess.Data
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        {   
+            // Uncomment for local DB
+
             //optionsBuilder.UseSqlServer(@"Server=DVT-CHANGEMENOW\SQLEXPRESS;Database=CodingWiki;TrustServerCertificate=True;Trusted_Connection=True;")
             //    .LogTo(System.Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            // Fluent API, folder FluentConfigs = best practice
             modelBuilder.ApplyConfiguration(new FluentBookDetailConfig());
             
-            
 
-
-
-
-            
+            // Alternative, write Fluent API here
             modelBuilder.Entity<Fluent_BookAuthorMap>()
                         .HasKey(ba => new
                         {
